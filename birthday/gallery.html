@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Our Memories ❤️</title>
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        font-family:"Poppins",sans-serif;
+        background:#ffeef5;
+        text-align:center;
+    }
+
+    h1{
+        margin-top:40px;
+        font-size:2.5rem;
+        color:#ff4f77;
+    }
+    p{
+        margin-top:-10px;
+        color:#444;
+        font-size:1.1rem;
+    }
+
+    /* GALLERY GRID */
+    .gallery{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+        gap:35px;
+        padding:40px;
+        justify-items:center;
+    }
+
+    /* CARD BASE */
+    .card{
+        width:190px;
+        height:270px;
+        perspective:1000px;
+        position:relative;
+    }
+
+    /* For flexible screens */
+    @media(max-width:500px){
+        .card{
+            width:160px;
+            height:230px;
+        }
+    }
+
+    @media(max-width:380px){
+        .card{
+            width:80%;
+            height:auto;
+            aspect-ratio:190/270;
+        }
+    }
+
+    .card-inner{
+        width:100%;
+        height:100%;
+        position:relative;
+        transform-style:preserve-3d;
+        transition:transform 0.8s;
+    }
+
+    /* hover rotate for UNLOCKED only */
+    .card:hover:not(.locked) .card-inner{
+        transform:rotateY(180deg);
+    }
+
+    .card.flipped .card-inner{
+        transform:rotateY(180deg) !important;
+    }
+
+    .card-front{
+        background:#ff4f77;
+        color:white;
+        border-radius:15px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:20px;
+        font-size:1rem;
+        font-weight:600;
+        position:absolute;
+        width:100%;
+        height:100%;
+        backface-visibility:hidden;
+    }
+
+    @media(max-width:500px){
+        .card-front{
+            padding:15px;
+            font-size:0.9rem;
+        }
+    }
+
+    .card-back{
+        position:absolute;
+        width:100%;
+        height:100%;
+        border-radius:15px;
+        backface-visibility:hidden;
+        transform:rotateY(180deg);
+        overflow:hidden;
+    }
+
+    .card-back img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:15px;
+        display:block;
+    }
+
+    /* LOCKED OVERLAY */
+    .locked-overlay{
+        position:absolute;
+        left:0;top:0;
+        width:100%;height:100%;
+        background:rgba(0,0,0,0.55);
+        color:white;
+        font-size:1rem;
+        font-weight:700;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:15px;
+        cursor:pointer;
+        z-index:30;
+        padding:10px;
+        text-align:center;
+    }
+
+    /* NAV BUTTONS */
+    .nav-container{
+        margin:35px 0 50px;
+        text-align:center;
+    }
+
+    .btn{
+        padding:12px 28px;
+        background:#ff4f77;
+        color:white;
+        font-weight:600;
+        border-radius:30px;
+        text-decoration:none;
+        font-size:1.1rem;
+        margin:0 12px;
+        transition:0.3s;
+        display:inline-block;
+    }
+
+    .btn:hover{
+        background:#e63f6a;
+        transform:translateY(-3px);
+    }
+
+    @media(max-width:500px){
+        .btn{
+            padding:10px 22px;
+            font-size:1rem;
+            margin:10px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Flip to See Our Memories 💗</h1>
+<p>Click a card to reveal the picture behind the message.</p>
+
+<div class="gallery">
+
+    <!-- Card 1 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">Morning brekkie. Pancakes and boba tea. 😘</div>
+            <div class="card-back"><img src="images/img1.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front"> 5/11/2023. Zomaland date! ❤️</div>
+            <div class="card-back"><img src="images/img2.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 3 (LOCKED) -->
+    <div class="card locked" id="card3">
+        <div class="card-inner">
+            <div class="card-front">😘</div>
+            <div class="card-back"><img src="images/img3.JPG" alt=""></div>
+        </div>
+        <div class="locked-overlay" id="lock3">🔒 Tap to unlock</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">Asian Championships 2023😍</div>
+            <div class="card-back"><img src="images/img4.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">29/11/2022. Our one year anniversary❤️</div>
+            <div class="card-back"><img src="images/img5.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">World Games Starbucks with Pandachan🐼</div>
+            <div class="card-back"><img src="images/img6.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">6/6/2023. My First birthday we celebrated together🥰</div>
+            <div class="card-back"><img src="images/img7.JPG" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">29/11/2023. Our two year anniversary🥰 </div>
+            <div class="card-back"><img src="images/img8.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">Random college pic which became your screen wallpaper ❤️</div>
+            <div class="card-back"><img src="images/img9.JPG" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">14/02/2024. Valentines day story 🥲</div>
+            <div class="card-back"><img src="images/img10.JPG" alt=""></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="nav-container">
+    <a href="about.html" class="btn">← Previous</a>
+    <a href="letter.html" class="btn">Next →</a>
+</div>
+
+<script>
+    const lock3 = document.getElementById('lock3');
+    const card3 = document.getElementById('card3');
+
+    lock3.addEventListener('click', () => {
+        const pwd = prompt('Enter 4 digit password to unlock this memory: (hint- Our birthdays (DDDD))');
+
+        if (pwd === '2906') {
+            card3.classList.add('flipped');
+            lock3.style.display = 'none';
+
+            setTimeout(() => {
+                card3.classList.remove('flipped');
+                lock3.style.display = 'flex';
+            }, 3000);
+        } else if (pwd !== null) {
+            alert('Incorrect password ❌');
+        }
+    });
+</script>
+
+</body>
+</html>

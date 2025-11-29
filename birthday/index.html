@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy 4 years my little princess! ❤️</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffdde1);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 32px;
+            background: white;
+            color: #ff4d6d;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            background: #ffe6ea;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.7);
+            animation: floatUp 6s linear infinite;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-800px); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 📱 RESPONSIVE FIXES FOR MOBILES */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .btn {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Happy 4 years my little princess! ❤️</h1>
+        <p>You are the best thing in my life and I love you the most. Always and forever ♾️</p>
+
+        <a href="about.html" class="btn">A little peak at our story →</a>
+    </div>
+
+    <!-- Floating hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 15 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 2 + 4 + "s";
+            heart.style.bottom = "-20px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>

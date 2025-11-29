@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Our Story ❤️</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 18px;
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            margin-bottom: 20px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .about-subtext {
+            font-size: clamp(1rem, 3.5vw, 1.3rem);
+            opacity: 0.9;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease-in-out;
+            line-height: 1.7;
+            padding: 0 5px;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 22px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            animation: slideUp 1s ease-in-out;
+            text-align: left;
+        }
+
+        .story-card h2 {
+            margin-bottom: 10px;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: #fff;
+        }
+
+        .story-card p {
+            font-size: clamp(0.95rem, 3.2vw, 1.12rem);
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        /* NAV BUTTONS */
+        .btn {
+            display: inline-block;
+            margin: 25px 15px 0;
+            padding: 12px 25px;
+            background: #fff;
+            color: #ff4d6d;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: clamp(0.9rem, 3vw, 1.15rem);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.5);
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            background: #ffe6ea;
+        }
+
+        .nav-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Prevent layout shifting on very small screens */
+        @media (max-width: 480px) {
+            .story-card {
+                padding: 18px;
+            }
+            .about-container {
+                padding: 25px 15px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="about-container">
+
+        <h1 class="about-title">Our Story ❤️</h1>
+
+        <p class="about-subtext">
+            A little something I wanted to tell you…  
+            Thank you for being the most beautiful part of my world.
+        </p>
+
+        <div class="story-card">
+            <h2>✨ The First Time</h2>
+            <p>
+First hi (in person)- 23th oct..at MM....
+
+first time she said "ily" on chat(spotify)- 21st nov..after states while coming back in car..i asked her "ily, if im ross will u b my rachael?"..n she replied, "yes i'll b ur rachael n ily 2"
+
+first kiss (on forhead and cheeks)- (19th dec)..in a pvr in chandigarh (nationals) while watching no way home (after intermission)
+
+first time we sat together holding hands- (14th dec)..in chandigarh while coming back from track (in bus)(in the evenings, it was dark n thrilling 🤩🤩)
+
+first time she actually said "ily" in person (face to face)- 14th dec..in chandigarh while coming back from track in bus n while watching friends n holding hands (she wispered me in my ear)..
+n the timing she did it made it even betterr and romantic🥰😚 (we were watching friends n it was the part where Ross gets to know 
+that Rachael knows that he likes her in S2 ep7...."the closure part")..[i will nvr forget that moment]
+            </p>
+        </div>
+
+        <div class="story-card">
+            <h2>Random Facts about Pandachan 🐼</h2>
+            <p>
+She's a potterhead🧙🏻, hothead (gets annoyed n upset way too easily)..
+She's a cat person (loves cats) 🐈..
+Fav ice-cream — vanilla swirled with hazelnut crumbles n nuttela n ferrero rochers (Swirls)..
+Things she loves — ice-cream, chocolates, space/moon, milkshakes, le plaisir's red alfredo pasta..
+Fav colour — lavender/peach, red..
+Fav cuisine — Asian; food — Sushi..
+Fav chocolates — Reese's, Toblerone n Snickers 🍫..
+Fav flowers — carnations, peonies 🌻..
+Fav Disney movie — "Little Mermaid".. she'll save my number as "Eric" 🥰...
+Mountain > beach..
+Night owl > early bird 😆..
+            </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <a href="index.html" class="btn">← Previous</a>
+            <a href="gallery.html" class="btn">Next →</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

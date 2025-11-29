@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Happy Birthday ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ff9ccf, #ffd6e8);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 8vw, 4rem);
+            color: #ff1e77;
+            margin: 0;
+            animation: bounce 2s infinite;
+            line-height: 1.2;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+
+        p {
+            font-size: clamp(1rem, 3.8vw, 1.3rem);
+            color: #fff;
+            max-width: 650px;
+            margin-top: 20px;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 32px;
+            background: #ff4f77;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #e73f6b;
+            transform: translateY(-2px);
+        }
+
+        /* Confetti pieces */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffde59;
+            top: 0;
+            animation: fall linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Improve layout on smaller devices */
+        @media (max-width: 480px) {
+            .back-btn {
+                padding: 12px 26px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Happy Birthday ❤️</h1>
+
+    <p>
+        To the most amazing person in my life,<br>
+        you make every day brighter, happier, and full of love.<br>
+        May your day be as beautiful as your smile. 💖
+    </p>
+
+    <a class="back-btn" href="gallery.html">← Back to Memories</a>
+
+    <!-- Confetti Background -->
+    <script>
+        const colors = ['#ff4f77','#ffd6e8','#ff9ccf','#ffde59','#ffe066'];
+
+        for (let i = 0; i < 150; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (3 + Math.random() * 3) + 's';
+            confetti.style.width = (5 + Math.random() * 8) + 'px';
+            confetti.style.height = confetti.style.width;
+            document.body.appendChild(confetti);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+/* ----------------------------------------
+   GLOBAL STYLING
+---------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffbad7, #ff8fb1);
+    color: white;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Page Titles */
+h1 {
+    margin-top: 40px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+}
+
+/* Paragraphs */
+p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    padding: 10px;
+}
+
+/* ----------------------------------------
+   BUTTONS
+---------------------------------------- */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: white;
+    color: #ff4f98;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #ffe0ef;
+    transform: scale(1.05);
+}
+
+/* ----------------------------------------
+   SECTIONS / BOXES
+---------------------------------------- */
+.box {
+    background: rgba(255, 255, 255, 0.15);
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+/* ----------------------------------------
+   GALLERY GRID  (Works for 6x2 or 4x3)
+---------------------------------------- */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+    padding: 30px;
+}
+
+/* For mobile responsiveness */
+@media(max-width: 900px) {
+    .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ----------------------------------------
+   FLIP CARDS (Gallery)
+---------------------------------------- */
+.card {
+    perspective: 1000px;
+    height: 220px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Card front & back */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.card-front {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* ----------------------------------------
+   GAME PAGE ELEMENTS
+---------------------------------------- */
+.game-box {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+.option {
+    background: white;
+    color: #ff4f98;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.option:hover {
+    background: #ffe5f3;
+}
+
+/* ----------------------------------------
+   AESTHETIC POPUP FOR CORRECT/WRONG
+---------------------------------------- */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: white;
+    color: #ff4f98;
+    padding: 25px 35px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+#popup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+#popup.ok {
+    border-left: 6px solid #ff4f98;
+}
+
+#popup.no {
+    border-left: 6px solid #ff1a5f;
+}
+
+/* ----------------------------------------
+   FLOATING HEART ANIMATION (For Love Letter)
+---------------------------------------- */
+@keyframes floatheart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120px) scale(1.4);
+        opacity: 0;
+    }
+}
+
+.heart {
+    position: absolute;
+    bottom: 10px;
+    font-size: 22px;
+    animation: floatheart 3s linear infinite;
+    color: #ff4f98;
+}
+
+/* ----------------------------------------
+   LOVE LETTER TYPING EFFECT
+---------------------------------------- */
+.typewriter {
+    width: 85%;
+    margin: 30px auto;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-right: 3px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(40), blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 85% }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}

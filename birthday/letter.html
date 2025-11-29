@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter From My Heart ❤️</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffd1e8, #ffecf7);
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 120px auto 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-family: "Great Vibes", cursive;
+            color: #ff4f77;
+            margin-bottom: 10px;
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+            min-height: 200px;
+        }
+
+        /* Typewriter Cursor */
+        .typing {
+            border-right: 3px solid #ff4f77;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Navigation buttons */
+        .nav-btns {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: #ff4f77;
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: #e73f6b;
+            transform: translateY(-2px);
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff4f77;
+            font-size: 20px;
+            animation: floatUp 6s infinite ease-in;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating hearts via JS -->
+
+    <div class="container">
+        <h1>❤️</h1>
+
+        <div id="letter" class="letter typing"></div>
+
+        <div class="nav-btns">
+            <a class="btn" href="gallery.html">← Previous</a>
+            <a class="btn" href="game.html">Next →</a>
+        </div>
+    </div>
+
+    <script>
+        const text = `
+    My little princess,
+
+        There's no place i'd rather b than here, next to u...there's no hands i'd rather hold than yours...there's no lips i'd rather kiss than yours..there's no souls i'd b attached with than your...
+        uk there are times when i feel like i want u right now, give u a tight hugg, kiss your forehead and tell u how much i love you and could hardly let u go away from me❤️
+        I love you...not mayb not tom not someday, i love you right now at this moment n i realised smtg that i need u, its as simple as that..idt there is any need to use fancy words to describe that i need
+        you to b with me for the rest of my life..i love you for everything that you are n for everything that you're not! You are soo perfectly flawed but also perfectly you
+        and ik i am wrong a lot of times and we fight, get mad at each other but lemme tell u this from the bottom of my heart..'NOTHING' literally nothing in this wrld can change the fact that i love you n  
+        im gonna keep 'us' forever w/o any second thoughts🤗 ❤️ 
+        It's you. It's been you for as long as i remember. Everyone else has just been another failed attempt at perfecting the art of pretending you're not. I love you n i miss you🥰🥺
+        N mayb i need u as much as Mr Bean needs his teddy
+        There are worlds in you, n i have fallen in love with every one!
+        Forever yours,
+        Me ❤️
+        
+        `;
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("letter").innerHTML = text.substring(0, i+1);
+                i++;
+                setTimeout(typeWriter, 40);
+            } else {
+                document.getElementById("letter").classList.remove("typing");
+            }
+        }
+        typeWriter();
+
+        /* Floating hearts animation */
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (20 + Math.random()*20) + "px";
+            heart.style.animationDuration = (4 + Math.random()*3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 7000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
