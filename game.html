@@ -165,16 +165,11 @@
 
     <script>
         const questions = [
-            { q: "Where did we first go out together? ❤️", options: ["Mall", "Café", "Park"], answer: "Café" },
-            { q: "What was the first movie we watched together?", options: ["Marvel Movie", "Romantic Movie", "Comedy Movie"], answer: "Romantic Movie" },
-            { q: "What is my favorite thing about you?", options: ["Smile", "Eyes", "Everything"], answer: "Everything" },
-            { q: "Which month did we start talking?", options: ["January", "March", "June"], answer: "June" },
-            { q: "Our first long phone call lasted?", options: ["1 hour", "3 hours", "5 hours"], answer: "3 hours" },
-            { q: "Who said 'I love you' first?", options: ["Me", "You", "We said together"], answer: "Me" },
-            { q: "What is my nickname for you?", options: ["Baby", "Cutie", "Princess"], answer: "Princess" },
-            { q: "Which food do we love eating together?", options: ["Pizza", "Momoz", "Ice cream"], answer: "Momoz" },
-            { q: "Our favorite place to visit?", options: ["Sea side", "Mountains", "City lights"], answer: "Sea side" },
-            { q: "How many years has it been?", options: ["1", "4", "10"], answer: "4" }
+            { q: "Our first date restaurant ?", options: ["Mainland China", "Barometer", "Origins"], answer: "Origins" },
+            { q: "Color theme for our first date? ", options: ["Blue", "Black", "White"], answer: "Black" },
+            { q: "Birth of the word - Humming bird ? ", options: ["29/11/2023", "14/02/2022", "06/06/2023"], answer: "14/02/2022" },
+            { q: "The name of the FIRST spotify playlist you made for me (Hint- year 2021) ?", options: ["It's for you❤️", "For my Lobster😗", "Eric (Little mermaid)❤️"], answer: "It's for you❤️" },
+            { q: "Our first kiss? ", options: ["23/09/2022", "23/09/2023", "23/09/2021"], answer: "23/09/2022" },
         ];
 
         let currentIndex = 0;
@@ -226,6 +221,22 @@
             document.getElementById("score-box").style.display = "block";
             document.getElementById("score-text").innerHTML = 
                 `You scored <b>${score}</b> out of <b>${questions.length}</b>!`;
+
+            sendScore(score, questions.length);
+        }
+
+        /* 🔥 SEND SCORE TO GOOGLE SCRIPT */
+        function sendScore(score, total) {
+            fetch("https://script.google.com/macros/s/AKfycbyN6GNQiIcewtZfJXHTWV3US0smrflp3AYuPom-C-eEO9omcPiZzIOeoqqrMSdt6uIX/exec", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    score: score,
+                    total: total,
+                    agent: navigator.userAgent
+                })
+            });
         }
 
         loadQuestion();
