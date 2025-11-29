@@ -63,12 +63,12 @@
         transition:transform 0.8s;
     }
 
-    /* hover for laptop */
+    /* Hover flip (Laptop only) */
     .card:hover:not(.locked) .card-inner{
         transform:rotateY(180deg);
     }
 
-    /* mobile flip */
+    /* Mobile flip */
     .card.flipped .card-inner{
         transform:rotateY(180deg) !important;
     }
@@ -143,7 +143,6 @@
         transition:0.3s;
         display:inline-block;
     }
-
 </style>
 </head>
 
@@ -253,7 +252,7 @@ lock3.addEventListener('click', () => {
     }
 });
 
-/* MOBILE TAP-TO-FLIP FOR ALL OTHER CARDS */
+/* MOBILE TAP-TO-FLIP FOR ALL UNLOCKED CARDS */
 document.querySelectorAll(".card:not(.locked)").forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("flipped");
