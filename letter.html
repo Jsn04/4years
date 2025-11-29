@@ -47,7 +47,6 @@
             min-height: 200px;
         }
 
-        /* Typewriter Cursor */
         .typing {
             border-right: 3px solid #ff4f77;
             animation: blink 0.7s infinite;
@@ -57,7 +56,6 @@
             50% { border-color: transparent; }
         }
 
-        /* Navigation buttons */
         .nav-btns {
             margin-top: 40px;
             display: flex;
@@ -80,7 +78,6 @@
             transform: translateY(-2px);
         }
 
-        /* Floating hearts */
         .heart {
             position: absolute;
             color: #ff4f77;
@@ -93,12 +90,32 @@
             0% { transform: translateY(0) scale(1); opacity: 0.8; }
             100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
         }
+
+        /* Play Music Button */
+        .play-music-btn {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            background: #ff4f77;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 9999;
+        }
+        .play-music-btn:hover {
+            background: #e73c5f;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 🔊 Background Music (AUTOPLAY + LOOP) -->
-    <audio id="bgm" src="like.mp3" autoplay loop></audio>
+    <!-- Play Music Button -->
+    <button class="play-music-btn" id="playMusicBtn">Play Music 🎵</button>
 
     <div class="container">
         <h1>❤️</h1>
@@ -112,6 +129,16 @@
     </div>
 
     <script>
+        /* 🎵 FIXED MUSIC — plays only when user clicks */
+        const audio = new Audio("like.mp3");
+        audio.loop = true;
+
+        document.getElementById("playMusicBtn").addEventListener("click", () => {
+            audio.play().catch(err => console.log(err));
+            document.getElementById("playMusicBtn").style.display = "none";
+        });
+
+        /* Typewriter text */
         const text = `
     My little princess,
 
@@ -141,7 +168,7 @@
         }
         typeWriter();
 
-        /* Floating hearts animation */
+        /* Floating hearts */
         function createHeart() {
             const heart = document.createElement("div");
             heart.classList.add("heart");
