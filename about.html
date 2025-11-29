@@ -19,6 +19,28 @@
             overflow-x: hidden;
         }
 
+        /* 🔥 Music Button (Top Right) */
+        #music-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.85);
+            color: #ff4d6d;
+            padding: 10px 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(255,255,255,0.6);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+
+        #music-btn:hover {
+            transform: scale(1.08);
+            background: #ffe6ea;
+        }
+
         .about-container {
             max-width: 900px;
             margin: auto;
@@ -63,7 +85,6 @@
             white-space: pre-line;
         }
 
-        /* NAV BUTTONS */
         .btn {
             display: inline-block;
             margin: 25px 15px 0;
@@ -91,7 +112,6 @@
             gap: 15px;
         }
 
-        /* Prevent layout shifting on very small screens */
         @media (max-width: 480px) {
             .story-card {
                 padding: 18px;
@@ -101,7 +121,6 @@
             }
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -116,6 +135,40 @@
 
 <body>
 
+    <!-- Background Music -->
+    <audio id="bg-music" src="Yellow.mp3" preload="auto"></audio>
+
+    <!-- 🔥 Play Button (Top Right) -->
+    <button id="music-btn">▶ Music</button>
+
+    <script>
+        const audio = document.getElementById("bg-music");
+        const btn = document.getElementById("music-btn");
+
+        let isPlaying = false;
+
+        btn.addEventListener("click", () => {
+            if (!isPlaying) {
+                audio.currentTime = 80;  // start point
+                audio.play();
+                btn.textContent = "⏸ Pause";
+                isPlaying = true;
+            } else {
+                audio.pause();
+                btn.textContent = "▶ Music";
+                isPlaying = false;
+            }
+        });
+
+        audio.addEventListener("timeupdate", () => {
+            if (audio.currentTime >= 150) {   // end point
+                audio.pause();
+                btn.textContent = "▶ Music";
+                isPlaying = false;
+            }
+        });
+    </script>
+
     <div class="about-container">
 
         <h1 class="about-title">Our Story ❤️</h1>
@@ -126,17 +179,15 @@
         </p>
 
         <div class="story-card">
-            <h2>✨ The First Time</h2>
+            <h2>✨ The First Times</h2>
             <p>
 First hi (in person)- 23th oct..at MM....
 
-first time she said "ily" on chat(spotify)- 21st nov..after states while coming back in car..i asked her "ily, if im ross will u b my rachael?"..n she replied, "yes i'll b ur rachael n ily 2"
+First time she said "ily" on chat(spotify)- 21st nov..after states while coming back in car..i asked her "ily, if im ross will u b my rachael?"..n she replied, "yes i'll b ur rachael n ily 2"
 
-first kiss (on forhead and cheeks)- (19th dec)..in a pvr in chandigarh (nationals) while watching no way home (after intermission)
+First time we sat together holding hands- (14th dec)..in chandigarh while coming back from track (in bus)(in the evenings, it was dark n thrilling 🤩🤩)
 
-first time we sat together holding hands- (14th dec)..in chandigarh while coming back from track (in bus)(in the evenings, it was dark n thrilling 🤩🤩)
-
-first time she actually said "ily" in person (face to face)- 14th dec..in chandigarh while coming back from track in bus n while watching friends n holding hands (she wispered me in my ear)..
+First time she actually said "ily" in person (face to face)- 14th dec..in chandigarh while coming back from track in bus n while watching friends n holding hands (she wispered me in my ear)..
 n the timing she did it made it even betterr and romantic🥰😚 (we were watching friends n it was the part where Ross gets to know 
 that Rachael knows that he likes her in S2 ep7...."the closure part")..[i will nvr forget that moment]
             </p>
@@ -159,7 +210,6 @@ Night owl > early bird 😆..
             </p>
         </div>
 
-        <!-- Navigation -->
         <div class="nav-container">
             <a href="index.html" class="btn">← Previous</a>
             <a href="gallery.html" class="btn">Next →</a>

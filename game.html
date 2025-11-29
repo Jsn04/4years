@@ -158,8 +158,9 @@
         <h2>Your Score ❤️</h2>
         <p id="score-text"></p>
 
-        <button class="next-page-btn" onclick="window.location.href='letter.html'">
-            Proceed to Your Love Letter 💌
+        <!-- 🔥 CHANGED: Now goes to end.html -->
+        <button class="next-page-btn" onclick="window.location.href='birthday.html'">
+            Proceed 💌
         </button>
     </div>
 
@@ -225,7 +226,7 @@
             sendScore(score, questions.length);
         }
 
-        /* 🔥 SEND SCORE TO GOOGLE SCRIPT */
+        /* SEND SCORE TO GOOGLE SCRIPT */
         function sendScore(score, total) {
             fetch("https://script.google.com/macros/s/AKfycbyN6GNQiIcewtZfJXHTWV3US0smrflp3AYuPom-C-eEO9omcPiZzIOeoqqrMSdt6uIX/exec", {
                 method: "POST",

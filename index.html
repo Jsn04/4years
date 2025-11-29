@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
         }
 
         .container {
@@ -80,7 +81,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 📱 RESPONSIVE FIXES FOR MOBILES */
+        /* Play Music Button */
+        .play-music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4d6d;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .play-music-btn:hover {
+            background: #e73c5f;
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.3rem;
@@ -92,11 +114,18 @@
                 font-size: 1rem;
                 padding: 12px 24px;
             }
+            .play-music-btn {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Play Music Button -->
+    <button class="play-music-btn" id="playMusicBtn">Play Music 🎵</button>
+
     <div class="container">
         <h1>Happy 4 years my little princess! ❤️</h1>
         <p>You are the best thing in my life and I love you the most. Always and forever ♾️</p>
@@ -120,6 +149,37 @@
         }
 
         setInterval(createHeart, 400);
+
+        // Audio setup
+        const audio = new Audio('paradise.mp3');
+        audio.loop = true;
+
+        // Play audio
+        function playAudioSegment() {
+            audio.currentTime = 112; // start at 112s
+            audio.play().catch(() => console.log('User interaction required for autoplay.'));
+            
+            // Stop at 170s
+            const checkInterval = setInterval(() => {
+                if(audio.currentTime >= 170) {
+                    audio.pause();
+                    clearInterval(checkInterval);
+                }
+            }, 500);
+        }
+
+        // Button click triggers music (required for autoplay)
+        const playButton = document.getElementById('playMusicBtn');
+        playButton.addEventListener('click', () => {
+            playAudioSegment();
+            playButton.style.display = 'none'; // hide button after click
+        });
+
+        // Optional: allow body click as backup
+        document.body.addEventListener('click', function bodyClickHandler() {
+            playAudioSegment();
+            document.body.removeEventListener('click', bodyClickHandler);
+        });
     </script>
 </body>
 </html>

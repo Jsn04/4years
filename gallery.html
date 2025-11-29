@@ -63,12 +63,10 @@
         transition:transform 0.8s;
     }
 
-    /* Hover flip (Laptop only) */
     .card:hover:not(.locked) .card-inner{
         transform:rotateY(180deg);
     }
 
-    /* Mobile flip */
     .card.flipped .card-inner{
         transform:rotateY(180deg) !important;
     }
@@ -231,6 +229,9 @@
     <a href="letter.html" class="btn">Next →</a>
 </div>
 
+<!-- 🔊 BACKGROUND MUSIC (25s to 90s) -->
+<audio id="bg-music" src="Ordinary.mp3" autoplay muted></audio>
+
 <script>
 /* LOCKED CARD FUNCTIONALITY */
 const lock3 = document.getElementById('lock3');
@@ -252,11 +253,33 @@ lock3.addEventListener('click', () => {
     }
 });
 
-/* MOBILE TAP-TO-FLIP FOR ALL UNLOCKED CARDS */
+/* MOBILE TAP-TO-FLIP */
 document.querySelectorAll(".card:not(.locked)").forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("flipped");
     });
+});
+
+/* 🔊 MUSIC SEGMENT: PLAY ONLY 25s → 90s */
+const audio = document.getElementById("bg-music");
+const START_TIME = 25;
+const END_TIME = 90;
+
+audio.volume = 0.35;
+
+audio.addEventListener("loadedmetadata", () => {
+    audio.currentTime = START_TIME;
+    audio.play();
+});
+
+/* Fix autoplay restriction */
+setTimeout(() => { audio.muted = false; }, 400);
+
+audio.addEventListener("timeupdate", () => {
+    if (audio.currentTime >= END_TIME) {
+        audio.currentTime = START_TIME;
+        audio.play();
+    }
 });
 </script>
 
