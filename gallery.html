@@ -141,10 +141,33 @@
         transition:0.3s;
         display:inline-block;
     }
+
+    /* Play Music Button */
+    .play-music-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff4f77;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+    .play-music-btn:hover {
+        background: #e73c5f;
+    }
 </style>
 </head>
 
 <body>
+
+<!-- Play Music Button -->
+<button class="play-music-btn" id="playMusicBtn">Play Music 🎵</button>
 
 <h1>Flip to See Our Memories 💗</h1>
 <p>Click a card to reveal the picture behind the message.</p>
@@ -229,9 +252,6 @@
     <a href="letter.html" class="btn">Next →</a>
 </div>
 
-<!-- 🔊 BACKGROUND MUSIC (25s to 90s) -->
-<audio id="bg-music" src="Ordinary.mp3" autoplay muted></audio>
-
 <script>
 /* LOCKED CARD FUNCTIONALITY */
 const lock3 = document.getElementById('lock3');
@@ -261,25 +281,36 @@ document.querySelectorAll(".card:not(.locked)").forEach(card => {
 });
 
 /* 🔊 MUSIC SEGMENT: PLAY ONLY 25s → 90s */
-const audio = document.getElementById("bg-music");
 const START_TIME = 25;
 const END_TIME = 90;
-
+const audio = new Audio('Ordinary.mp3');
 audio.volume = 0.35;
 
-audio.addEventListener("loadedmetadata", () => {
+// Function to play the segment
+function playSegment() {
     audio.currentTime = START_TIME;
-    audio.play();
+    audio.play().catch(() => console.log('User interaction required for autoplay'));
+
+    // Loop between START_TIME and END_TIME
+    const interval = setInterval(() => {
+        if(audio.currentTime >= END_TIME){
+            audio.currentTime = START_TIME;
+            audio.play();
+        }
+    }, 500);
+}
+
+// Play Music button
+const playBtn = document.getElementById('playMusicBtn');
+playBtn.addEventListener('click', () => {
+    playSegment();
+    playBtn.style.display = 'none'; // hide button after click
 });
 
-/* Fix autoplay restriction */
-setTimeout(() => { audio.muted = false; }, 400);
-
-audio.addEventListener("timeupdate", () => {
-    if (audio.currentTime >= END_TIME) {
-        audio.currentTime = START_TIME;
-        audio.play();
-    }
+// Optional: allow body click as backup
+document.body.addEventListener('click', function bodyClickHandler() {
+    playSegment();
+    document.body.removeEventListener('click', bodyClickHandler);
 });
 </script>
 
